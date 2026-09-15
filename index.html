@@ -1,0 +1,2966 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Paradise | Premium Restaurant</title>
+
+    <style>
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        :root {
+            --black: #080808;
+            --dark: #111111;
+            --card: #171717;
+            --gold: #d4af37;
+            --gold-light: #f4d675;
+            --white: #ffffff;
+            --gray: #bdbdbd;
+            --border: #2b2b2b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 7%;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(8, 8, 8, 0.97);
+
+            border-bottom: 1px solid var(--border);
+
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold-light);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 88vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 7%;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.85)
+                ),
+                url("images/pizza.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-small {
+            color: var(--gold);
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .main-btn {
+            display: inline-block;
+
+            background: var(--gold);
+            color: #000;
+
+            padding: 14px 25px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .main-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .outline-btn {
+            display: inline-block;
+
+            color: var(--gold);
+
+            border: 1px solid var(--gold);
+
+            padding: 13px 24px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            margin-left: 10px;
+
+            transition: 0.3s;
+        }
+
+        .outline-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* =========================
+           TITLES
+        ========================= */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            color: var(--gray);
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            padding: 32px 22px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            border-color: var(--gold);
+            transform: translateY(-7px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+        }
+
+        .feature h3 {
+            color: var(--gold);
+            margin: 15px 0 10px;
+        }
+
+        .feature p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        .menu-controls {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        #searchBox {
+            width: 330px;
+            max-width: 90%;
+
+            padding: 14px 18px;
+
+            background: var(--card);
+            color: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        #searchBox:focus {
+            border-color: var(--gold);
+        }
+
+        .categories {
+            margin-top: 18px;
+        }
+
+        .categories button {
+            padding: 10px 18px;
+
+            margin: 5px;
+
+            background: var(--card);
+            color: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            cursor: pointer;
+        }
+
+        .categories button:hover,
+        .categories button.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .food-card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 35px rgba(212,175,55,0.12);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .food-info {
+            padding: 22px;
+        }
+
+        .food-info h3 {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .food-info p {
+            color: var(--gray);
+            line-height: 1.5;
+            min-height: 45px;
+        }
+
+        .food-bottom {
+            margin-top: 18px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: var(--gold);
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: var(--gold);
+            color: #000;
+
+            border: none;
+
+            padding: 9px 14px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            background: var(--gold-light);
+        }
+
+        /* =========================
+           OFFERS
+        ========================= */
+
+        .offers {
+            background:
+                linear-gradient(
+                    rgba(212,175,55,0.08),
+                    rgba(212,175,55,0.02)
+                );
+
+            text-align: center;
+        }
+
+        .offer-box {
+            max-width: 750px;
+            margin: auto;
+
+            padding: 45px;
+
+            border: 1px solid var(--gold);
+
+            border-radius: 15px;
+        }
+
+        .offer-box h2 {
+            color: var(--gold);
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .offer-box p {
+            color: #ddd;
+        }
+
+        .coupon-code {
+            display: inline-block;
+
+            margin-top: 22px;
+
+            padding: 12px 28px;
+
+            border: 2px dashed var(--gold);
+
+            color: var(--gold);
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            font-size: 20px;
+        }
+
+        /* =========================
+           CART
+        ========================= */
+
+        .cart-section {
+            background: #0d0d0d;
+        }
+
+        .cart-container {
+            max-width: 950px;
+            margin: auto;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            padding: 30px;
+
+            border-radius: 12px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item strong {
+            color: white;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity button {
+            background: #252525;
+            color: white;
+
+            border: 1px solid #333;
+
+            padding: 6px 10px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .quantity button:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .coupon-box {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .coupon-box input {
+            flex: 1;
+
+            padding: 13px;
+
+            background: #101010;
+            color: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        .coupon-box input:focus {
+            border-color: var(--gold);
+        }
+
+        .coupon-btn {
+            background: var(--gold);
+            color: #000;
+
+            border: none;
+
+            padding: 13px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .order-type {
+            margin-top: 30px;
+        }
+
+        .order-type h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .order-type label {
+            display: inline-block;
+
+            padding: 11px 15px;
+
+            margin: 5px;
+
+            background: #222;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            cursor: pointer;
+        }
+
+        .order-type label:hover {
+            border-color: var(--gold);
+        }
+
+        .cart-summary {
+            margin-top: 25px;
+            line-height: 2;
+        }
+
+        .cart-summary div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .grand-total {
+            border-top: 1px solid var(--gold);
+
+            margin-top: 10px;
+
+            padding-top: 12px;
+
+            font-size: 25px;
+
+            color: var(--gold);
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 55px;
+
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 15px;
+
+            border: 1px solid var(--gold);
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            color: var(--gold);
+        }
+
+        .about-text p {
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-top: 50px;
+        }
+
+        .stat {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 10px;
+        }
+
+        .stat h3 {
+            color: var(--gold);
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            color: var(--gray);
+        }
+
+        /* =========================
+           FORMS
+        ========================= */
+
+        .form-box {
+            max-width: 700px;
+
+            margin: auto;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            padding: 32px;
+
+            border-radius: 12px;
+        }
+
+        .form-box input,
+        .form-box textarea,
+        .form-box select {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 15px;
+
+            background: #0d0d0d;
+
+            color: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        .form-box input:focus,
+        .form-box textarea:focus,
+        .form-box select:focus {
+            border-color: var(--gold);
+        }
+
+        .form-box textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 3000;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.85);
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .modal-content {
+            width: 520px;
+            max-width: 100%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: #151515;
+
+            border: 1px solid var(--gold);
+
+            padding: 30px;
+
+            border-radius: 12px;
+        }
+
+        .modal-content h2 {
+            color: var(--gold);
+        }
+
+        .close {
+            float: right;
+
+            font-size: 28px;
+
+            color: var(--gray);
+
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--gold);
+        }
+
+        .modal-content input,
+        .modal-content textarea,
+        .modal-content select {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 15px;
+
+            background: #0c0c0c;
+
+            color: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 7px;
+
+            outline: none;
+        }
+
+        .modal-content textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        /* =========================
+           BILL
+        ========================= */
+
+        .bill {
+            background: #0c0c0c;
+
+            border: 1px solid #333;
+
+            padding: 25px;
+
+            margin-top: 15px;
+
+            border-radius: 8px;
+        }
+
+        .bill h2 {
+            text-align: center;
+
+            color: var(--gold);
+
+            margin-bottom: 20px;
+        }
+
+        .bill-line {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin: 9px 0;
+        }
+
+        .bill-total {
+            border-top: 1px solid var(--gold);
+
+            margin-top: 15px;
+
+            padding-top: 15px;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: var(--gold);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #050505;
+
+            border-top: 1px solid var(--border);
+
+            color: white;
+
+            padding: 55px 7%;
+
+            text-align: center;
+        }
+
+        footer h2 {
+            color: var(--gold);
+
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: var(--gray);
+
+            margin: 8px;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        #toast {
+            visibility: hidden;
+
+            position: fixed;
+
+            bottom: 25px;
+
+            right: 25px;
+
+            z-index: 5000;
+
+            background: var(--gold);
+
+            color: #000;
+
+            padding: 14px 20px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+        }
+
+        #toast.show {
+            visibility: visible;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 900px) {
+
+            .features,
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .features,
+            .menu-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .outline-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .coupon-box {
+                flex-direction: column;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .quantity {
+                flex-wrap: wrap;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        🍴 Food Paradise
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#menu">Menu</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+    <div class="nav-buttons">
+
+        <button
+            class="nav-btn"
+            onclick="goToCart()"
+        >
+            🛒 <span id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            Premium Dining Experience
+        </div>
+
+        <h1>
+            Taste the
+            <span>Luxury.</span>
+        </h1>
+
+        <p>
+            Welcome to Food Paradise — where premium
+            ingredients, amazing flavors and unforgettable
+            dining experiences come together.
+        </p>
+
+        <a
+            href="#menu"
+            class="main-btn"
+        >
+            Explore Menu
+        </a>
+
+        <a
+            href="#reservation"
+            class="outline-btn"
+        >
+            Reserve Table
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>Why Us</span>
+
+        <h2>Experience the Difference</h2>
+
+        <p>
+            Quality food and premium service.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🥘
+            </div>
+
+            <h3>Fresh Ingredients</h3>
+
+            <p>
+                Only quality ingredients are used
+                in our kitchen.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                👨‍🍳
+            </div>
+
+            <h3>Expert Chefs</h3>
+
+            <p>
+                Delicious dishes prepared by
+                experienced chefs.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <h3>Fast Delivery</h3>
+
+            <p>
+                Get your favorite food delivered
+                hot and fresh.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⭐
+            </div>
+
+            <h3>Premium Quality</h3>
+
+            <p>
+                Great taste and quality in every
+                single order.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<section id="menu">
+
+    <div class="section-title">
+
+        <span>Our Menu</span>
+
+        <h2>Signature Dishes</h2>
+
+        <p>
+            Choose your favorite dish.
+        </p>
+
+    </div>
+
+
+    <div class="menu-controls">
+
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="🔍 Search food..."
+            onkeyup="searchFood()"
+        >
+
+
+        <div class="categories">
+
+            <button
+                class="active"
+                onclick="filterFood('all', this)"
+            >
+                All
+            </button>
+
+            <button
+                onclick="filterFood('italian', this)"
+            >
+                Italian
+            </button>
+
+            <button
+                onclick="filterFood('fast', this)"
+            >
+                Fast Food
+            </button>
+
+            <button
+                onclick="filterFood('asian', this)"
+            >
+                Asian
+            </button>
+
+            <button
+                onclick="filterFood('indian', this)"
+            >
+                Indian
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="menu-grid"
+        id="menuGrid"
+    >
+
+
+        <!-- PIZZA -->
+
+        <div
+            class="food-card"
+            data-category="italian"
+            data-name="cheese pizza"
+        >
+
+            <img
+                src="images/pizza.jpg"
+                alt="Cheese Pizza"
+            >
+
+            <div class="food-info">
+
+                <h3>Cheese Pizza</h3>
+
+                <p>
+                    Fresh cheese pizza with delicious
+                    premium toppings.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="price">
+                        ₹199
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Cheese Pizza',199)"
+                    >
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BURGER -->
+
+        <div
+            class="food-card"
+            data-category="fast"
+            data-name="classic burger"
+        >
+
+            <img
+                src="images/burger.jpg"
+                alt="Classic Burger"
+            >
+
+            <div class="food-info">
+
+                <h3>Classic Burger</h3>
+
+                <p>
+                    Juicy burger with fresh vegetables
+                    and cheese.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="price">
+                        ₹149
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Classic Burger',149)"
+                    >
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOODLES -->
+
+        <div
+            class="food-card"
+            data-category="asian"
+            data-name="spicy noodles"
+        >
+
+            <img
+                src="images/noodles.jpg"
+                alt="Spicy Noodles"
+            >
+
+            <div class="food-info">
+
+                <h3>Spicy Noodles</h3>
+
+                <p>
+                    Hot and delicious noodles with
+                    fresh vegetables.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="price">
+                        ₹129
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Spicy Noodles',129)"
+                    >
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BIRYANI -->
+
+        <div
+            class="food-card"
+            data-category="indian"
+            data-name="chicken biryani"
+        >
+
+            <img
+                src="images/biryani.jpg"
+                alt="Chicken Biryani"
+            >
+
+            <div class="food-info">
+
+                <h3>Chicken Biryani</h3>
+
+                <p>
+                    Aromatic Indian biryani with
+                    flavorful spices.
+                </p>
+
+                <div class="food-bottom">
+
+                    <span class="price">
+                        ₹249
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('Chicken Biryani',249)"
+                    >
+                        Add +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     OFFER
+========================= -->
+
+<section class="offers">
+
+    <div class="offer-box">
+
+        <h2>
+            Golden Deal ✨
+        </h2>
+
+        <p>
+            Get ₹50 OFF on orders above ₹500.
+        </p>
+
+        <div class="coupon-code">
+            FOOD50
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<section
+    class="cart-section"
+    id="cart"
+>
+
+    <div class="section-title">
+
+        <span>Your Order</span>
+
+        <h2>Shopping Cart 🛒</h2>
+
+        <p>
+            Review your order before checkout.
+        </p>
+
+    </div>
+
+
+    <div class="cart-container">
+
+        <div id="cartItems">
+
+            <p>
+                Your cart is empty.
+            </p>
+
+        </div>
+
+
+        <!-- COUPON -->
+
+        <div class="coupon-box">
+
+            <input
+                type="text"
+                id="couponInput"
+                placeholder="Enter coupon code"
+            >
+
+            <button
+                class="coupon-btn"
+                onclick="applyCoupon()"
+            >
+                Apply
+            </button>
+
+        </div>
+
+
+        <!-- ORDER TYPE -->
+
+        <div class="order-type">
+
+            <h3>
+                Choose Order Type
+            </h3>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="orderType"
+                    value="Delivery"
+                    checked
+                    onchange="updateTotal()"
+                >
+
+                🚚 Delivery
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="orderType"
+                    value="Takeaway"
+                    onchange="updateTotal()"
+                >
+
+                🥡 Takeaway
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="orderType"
+                    value="Dine-in"
+                    onchange="updateTotal()"
+                >
+
+                🍽️ Dine-in
+
+            </label>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="cart-summary">
+
+            <div>
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span>
+                    ₹<span id="subtotal">0</span>
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Discount
+                </span>
+
+                <span>
+                    - ₹<span id="discount">0</span>
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Delivery
+                </span>
+
+                <span>
+                    ₹<span id="deliveryCharge">0</span>
+                </span>
+
+            </div>
+
+
+            <div class="grand-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span>
+                    ₹<span id="grandTotal">0</span>
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <button
+            class="main-btn"
+            onclick="openCheckout()"
+        >
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="about">
+
+        <div>
+
+            <img
+                src="images/biryani.jpg"
+                alt="Food Paradise"
+            >
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h2>
+                About
+                <span>Food Paradise</span>
+            </h2>
+
+            <p>
+                Food Paradise is a premium restaurant
+                experience created for people who love
+                great food and memorable moments.
+            </p>
+
+            <p>
+                Our menu combines classic favorites with
+                modern flavors, prepared using carefully
+                selected ingredients.
+            </p>
+
+            <a
+                href="#contact"
+                class="main-btn"
+            >
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <h3>10K+</h3>
+
+            <p>
+                Happy Customers
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>50+</h3>
+
+            <p>
+                Food Items
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>4.9⭐</h3>
+
+            <p>
+                Customer Rating
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>5+</h3>
+
+            <p>
+                Years Experience
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RESERVATION
+========================= -->
+
+<section id="reservation">
+
+    <div class="section-title">
+
+        <span>Book Now</span>
+
+        <h2>Reserve Your Table</h2>
+
+        <p>
+            Enjoy a premium dining experience.
+        </p>
+
+    </div>
+
+
+    <div class="form-box">
+
+        <input
+            type="text"
+            id="reserveName"
+            placeholder="Your Name"
+        >
+
+        <input
+            type="tel"
+            id="reservePhone"
+            placeholder="Phone Number"
+        >
+
+        <input
+            type="date"
+            id="reserveDate"
+        >
+
+        <input
+            type="time"
+            id="reserveTime"
+        >
+
+        <input
+            type="number"
+            id="reservePeople"
+            placeholder="Number of People"
+            min="1"
+        >
+
+        <button
+            class="main-btn"
+            onclick="reserveTable()"
+        >
+            Reserve Table
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <div class="section-title">
+
+        <span>Get In Touch</span>
+
+        <h2>Contact Us</h2>
+
+        <p>
+            We would love to hear from you.
+        </p>
+
+    </div>
+
+
+    <div class="form-box">
+
+        <input
+            type="text"
+            id="contactName"
+            placeholder="Your Name"
+        >
+
+        <input
+            type="email"
+            id="contactEmail"
+            placeholder="Your Email"
+        >
+
+        <textarea
+            id="contactMessage"
+            placeholder="Your Message"
+        ></textarea>
+
+        <button
+            class="main-btn"
+            onclick="sendMessage()"
+        >
+            Send Message
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CHECKOUT MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="checkoutModal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeCheckout()"
+        >
+            &times;
+        </span>
+
+        <h2>
+            Checkout
+        </h2>
+
+        <br>
+
+
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Full Name"
+        >
+
+
+        <input
+            type="tel"
+            id="customerPhone"
+            placeholder="Phone Number"
+        >
+
+
+        <textarea
+            id="customerAddress"
+            placeholder="Delivery Address"
+        ></textarea>
+
+
+        <select id="paymentMethod">
+
+            <option>
+                Cash on Delivery
+            </option>
+
+            <option>
+                UPI
+            </option>
+
+            <option>
+                Card
+            </option>
+
+        </select>
+
+
+        <!-- BILL -->
+
+        <div
+            class="bill"
+            id="bill"
+        >
+
+            <h2>
+                FOOD PARADISE
+            </h2>
+
+            <div id="billItems"></div>
+
+            <hr>
+
+            <div class="bill-line">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span>
+                    ₹<span id="billSubtotal">0</span>
+                </span>
+
+            </div>
+
+
+            <div class="bill-line">
+
+                <span>
+                    Discount
+                </span>
+
+                <span>
+                    - ₹<span id="billDiscount">0</span>
+                </span>
+
+            </div>
+
+
+            <div class="bill-line">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span>
+                    ₹<span id="billDelivery">0</span>
+                </span>
+
+            </div>
+
+
+            <div class="bill-total">
+
+                <div class="bill-line">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span>
+                        ₹<span id="billTotal">0</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <button
+            class="main-btn"
+            onclick="placeOrder()"
+        >
+            Place Order
+        </button>
+
+
+        <button
+            class="main-btn"
+            style="background:#25D366; margin-top:10px;"
+            onclick="whatsappOrder()"
+        >
+            📱 Order on WhatsApp
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast"></div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h2>
+        🍴 Food Paradise
+    </h2>
+
+    <p>
+        Premium food. Premium experience.
+    </p>
+
+    <p>
+        📍 Tiruppur, Tamil Nadu
+    </p>
+
+    <p>
+        📞 +91 98765 43210
+    </p>
+
+    <p>
+        ✉️ foodparadise@example.com
+    </p>
+
+    <p>
+        © 2026 Food Paradise. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    let cart = [];
+
+    let discountAmount = 0;
+
+
+    /* ADD TO CART */
+
+    function addToCart(name, price) {
+
+        let existing =
+            cart.find(item => item.name === name);
+
+
+        if (existing) {
+
+            existing.quantity++;
+
+        } else {
+
+            cart.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+
+        }
+
+
+        updateCart();
+
+        showToast(
+            name + " added to cart!"
+        );
+
+    }
+
+
+    /* INCREASE */
+
+    function increaseQuantity(index) {
+
+        cart[index].quantity++;
+
+        updateCart();
+
+    }
+
+
+    /* DECREASE */
+
+    function decreaseQuantity(index) {
+
+        if (
+            cart[index].quantity > 1
+        ) {
+
+            cart[index].quantity--;
+
+        } else {
+
+            cart.splice(index, 1);
+
+        }
+
+        updateCart();
+
+    }
+
+
+    /* REMOVE */
+
+    function removeItem(index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    }
+
+
+    /* UPDATE CART */
+
+    function updateCart() {
+
+        let cartItems =
+            document.getElementById(
+                "cartItems"
+            );
+
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML =
+                "<p>Your cart is empty.</p>";
+
+        } else {
+
+            cartItems.innerHTML = "";
+
+
+            cart.forEach(
+                (item, index) => {
+
+                    let itemTotal =
+                        item.price *
+                        item.quantity;
+
+
+                    cartItems.innerHTML += `
+
+                        <div class="cart-item">
+
+                            <div>
+
+                                <strong>
+                                    ${item.name}
+                                </strong>
+
+                                <br>
+
+                                ₹${item.price}
+                                ×
+                                ${item.quantity}
+
+                            </div>
+
+
+                            <div class="quantity">
+
+                                <button
+                                    onclick="decreaseQuantity(${index})"
+                                >
+                                    −
+                                </button>
+
+
+                                <span>
+                                    ${item.quantity}
+                                </span>
+
+
+                                <button
+                                    onclick="increaseQuantity(${index})"
+                                >
+                                    +
+                                </button>
+
+
+                                <button
+                                    onclick="removeItem(${index})"
+                                >
+                                    ❌
+                                </button>
+
+
+                                <strong>
+                                    ₹${itemTotal}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+        }
+
+
+        let totalQuantity =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.quantity,
+                0
+            );
+
+
+        document.getElementById(
+            "cartCount"
+        ).textContent =
+            totalQuantity;
+
+
+        updateTotal();
+
+    }
+
+
+    /* TOTAL */
+
+    function updateTotal() {
+
+        let subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    item.price *
+                    item.quantity,
+                0
+            );
+
+
+        let orderType =
+            document.querySelector(
+                'input[name="orderType"]:checked'
+            )?.value;
+
+
+        let deliveryCharge = 40;
+
+
+        if (
+            orderType === "Takeaway" ||
+            orderType === "Dine-in"
+        ) {
+
+            deliveryCharge = 0;
+
+        }
+
+
+        if (subtotal === 0) {
+
+            deliveryCharge = 0;
+
+        }
+
+
+        let total =
+            subtotal -
+            discountAmount +
+            deliveryCharge;
+
+
+        if (total < 0) {
+
+            total = 0;
+
+        }
+
+
+        document.getElementById(
+            "subtotal"
+        ).textContent =
+            subtotal;
+
+
+        document.getElementById(
+            "discount"
+        ).textContent =
+            discountAmount;
+
+
+        document.getElementById(
+            "deliveryCharge"
+        ).textContent =
+            deliveryCharge;
+
+
+        document.getElementById(
+            "grandTotal"
+        ).textContent =
+            total;
+
+    }
+
+
+    /* COUPON */
+
+    function applyCoupon() {
+
+        let code =
+            document.getElementById(
+                "couponInput"
+            ).value
+            .trim()
+            .toUpperCase();
+
+
+        let subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    item.price *
+                    item.quantity,
+                0
+            );
+
+
+        if (subtotal === 0) {
+
+            showToast(
+                "Add food to cart first!"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            code === "FOOD50" &&
+            subtotal >= 500
+        ) {
+
+            discountAmount = 50;
+
+            showToast(
+                "₹50 discount applied! 🎉"
+            );
+
+        } else if (
+            code === "FOOD50"
+        ) {
+
+            discountAmount = 0;
+
+            showToast(
+                "Minimum order is ₹500."
+            );
+
+        } else {
+
+            discountAmount = 0;
+
+            showToast(
+                "Invalid coupon code!"
+            );
+
+        }
+
+
+        updateTotal();
+
+    }
+
+
+    /* CHECKOUT */
+
+    function openCheckout() {
+
+        if (cart.length === 0) {
+
+            showToast(
+                "Your cart is empty!"
+            );
+
+            return;
+
+        }
+
+
+        updateBill();
+
+
+        document.getElementById(
+            "checkoutModal"
+        ).style.display =
+            "flex";
+
+    }
+
+
+    function closeCheckout() {
+
+        document.getElementById(
+            "checkoutModal"
+        ).style.display =
+            "none";
+
+    }
+
+
+    /* BILL */
+
+    function updateBill() {
+
+        let billItems =
+            document.getElementById(
+                "billItems"
+            );
+
+
+        billItems.innerHTML = "";
+
+
+        cart.forEach(item => {
+
+            let itemTotal =
+                item.price *
+                item.quantity;
+
+
+            billItems.innerHTML += `
+
+                <div class="bill-line">
+
+                    <span>
+                        ${item.name}
+                        × ${item.quantity}
+                    </span>
+
+                    <span>
+                        ₹${itemTotal}
+                    </span>
+
+                </div>
+
+            `;
+
+        });
+
+
+        let subtotal =
+            cart.reduce(
+                (sum, item) =>
+                    sum +
+                    item.price *
+                    item.quantity,
+                0
+            );
+
+
+        let orderType =
+            document.querySelector(
+                'input[name="orderType"]:checked'
+            ).value;
+
+
+        let delivery = 40;
+
+
+        if (
+            orderType === "Takeaway" ||
+            orderType === "Dine-in"
+        ) {
+
+            delivery = 0;
+
+        }
+
+
+        let total =
+            subtotal -
+            discountAmount +
+            delivery;
+
+
+        document.getElementById(
+            "billSubtotal"
+        ).textContent =
+            subtotal;
+
+
+        document.getElementById(
+            "billDiscount"
+        ).textContent =
+            discountAmount;
+
+
+        document.getElementById(
+            "billDelivery"
+        ).textContent =
+            delivery;
+
+
+        document.getElementById(
+            "billTotal"
+        ).textContent =
+            total;
+
+    }
+
+
+    /* PLACE ORDER */
+
+    function placeOrder() {
+
+        if (cart.length === 0) {
+
+            showToast(
+                "Cart is empty!"
+            );
+
+            return;
+
+        }
+
+
+        let name =
+            document.getElementById(
+                "customerName"
+            ).value.trim();
+
+
+        let phone =
+            document.getElementById(
+                "customerPhone"
+            ).value.trim();
+
+
+        if (!name || !phone) {
+
+            showToast(
+                "Enter your name and phone number."
+            );
+
+            return;
+
+        }
+
+
+        let orderType =
+            document.querySelector(
+                'input[name="orderType"]:checked'
+            ).value;
+
+
+        let total =
+            document.getElementById(
+                "billTotal"
+            ).textContent;
+
+
+        alert(
+            "Order placed successfully! 🎉\n\n" +
+            "Customer: " +
+            name +
+            "\n" +
+            "Order Type: " +
+            orderType +
+            "\n" +
+            "Total: ₹" +
+            total
+        );
+
+
+        cart = [];
+
+        discountAmount = 0;
+
+
+        document.getElementById(
+            "couponInput"
+        ).value = "";
+
+
+        updateCart();
+
+        closeCheckout();
+
+    }
+
+
+    /* WHATSAPP */
+
+    function whatsappOrder() {
+
+        if (cart.length === 0) {
+
+            showToast(
+                "Cart is empty!"
+            );
+
+            return;
+
+        }
+
+
+        let name =
+            document.getElementById(
+                "customerName"
+            ).value.trim();
+
+
+        let phone =
+            document.getElementById(
+                "customerPhone"
+            ).value.trim();
+
+
+        if (!name || !phone) {
+
+            showToast(
+                "Enter your name and phone first."
+            );
+
+            return;
+
+        }
+
+
+        let orderType =
+            document.querySelector(
+                'input[name="orderType"]:checked'
+            ).value;
+
+
+        let message =
+            "Hello Food Paradise! 🍴%0A%0A";
+
+
+        message +=
+            "Customer: " +
+            name +
+            "%0A";
+
+
+        message +=
+            "Phone: " +
+            phone +
+            "%0A";
+
+
+        message +=
+            "Order Type: " +
+            orderType +
+            "%0A%0A";
+
+
+        message +=
+            "Order Details:%0A";
+
+
+        cart.forEach(item => {
+
+            message +=
+                item.name +
+                " x " +
+                item.quantity +
+                " = ₹" +
+                (
+                    item.price *
+                    item.quantity
+                ) +
+                "%0A";
+
+        });
+
+
+        let total =
+            document.getElementById(
+                "billTotal"
+            ).textContent;
+
+
+        message +=
+            "%0ATotal: ₹" +
+            total;
+
+
+        /*
+            Replace this number with
+            your restaurant WhatsApp number.
+        */
+
+        let whatsappNumber =
+            "919876543210";
+
+
+        let url =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            message;
+
+
+        window.open(
+            url,
+            "_blank"
+        );
+
+    }
+
+
+    /* SEARCH */
+
+    function searchFood() {
+
+        let search =
+            document.getElementById(
+                "searchBox"
+            ).value
+            .toLowerCase();
+
+
+        let cards =
+            document.querySelectorAll(
+                ".food-card"
+            );
+
+
+        cards.forEach(card => {
+
+            let name =
+                card.dataset.name;
+
+
+            if (
+                name.includes(search)
+            ) {
+
+                card.style.display =
+                    "block";
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* FILTER */
+
+    function filterFood(
+        category,
+        button
+    ) {
+
+        document
+            .querySelectorAll(
+                ".categories button"
+            )
+            .forEach(btn => {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+        button.classList.add(
+            "active"
+        );
+
+
+        document
+            .querySelectorAll(
+                ".food-card"
+            )
+            .forEach(card => {
+
+                if (
+                    category === "all" ||
+                    card.dataset.category ===
+                    category
+                ) {
+
+                    card.style.display =
+                        "block";
+
+                } else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            });
+
+    }
+
+
+    /* RESERVATION */
+
+    function reserveTable() {
+
+        let name =
+            document.getElementById(
+                "reserveName"
+            ).value.trim();
+
+
+        let phone =
+            document.getElementById(
+                "reservePhone"
+            ).value.trim();
+
+
+        let date =
+            document.getElementById(
+                "reserveDate"
+            ).value;
+
+
+        let time =
+            document.getElementById(
+                "reserveTime"
+            ).value;
+
+
+        let people =
+            document.getElementById(
+                "reservePeople"
+            ).value;
+
+
+        if (
+            !name ||
+            !phone ||
+            !date ||
+            !time ||
+            !people
+        ) {
+
+            showToast(
+                "Please fill all details."
+            );
+
+            return;
+
+        }
+
+
+        showToast(
+            "Table reserved successfully! 🍽️"
+        );
+
+    }
+
+
+    /* CONTACT */
+
+    function sendMessage() {
+
+        let name =
+            document.getElementById(
+                "contactName"
+            ).value;
+
+
+        let email =
+            document.getElementById(
+                "contactEmail"
+            ).value;
+
+
+        let message =
+            document.getElementById(
+                "contactMessage"
+            ).value;
+
+
+        if (
+            !name ||
+            !email ||
+            !message
+        ) {
+
+            showToast(
+                "Please fill all fields."
+            );
+
+            return;
+
+        }
+
+
+        showToast(
+            "Message sent successfully! 📩"
+        );
+
+    }
+
+
+    /* CART BUTTON */
+
+    function goToCart() {
+
+        document
+            .getElementById("cart")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* TOAST */
+
+    function showToast(message) {
+
+        let toast =
+            document.getElementById(
+                "toast"
+            );
+
+
+        toast.textContent =
+            message;
+
+
+        toast.classList.add(
+            "show"
+        );
+
+
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        }, 2500);
+
+    }
+
+
+    /* INITIAL */
+
+    updateCart();
+
+</script>
+
+</body>
+</html>
+```
